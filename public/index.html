@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EventEase</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <h1>EventEase</h1>
+        <p>Manage your events with ease</p>
+      </div>
+      <button id="openFormBtn" class="add-event-btn">+ Add Event</button>
+    </div>
+    <div class="search-filter">
+      <div class="search-wrapper">
+        <input type="text" id="searchInput" placeholder="Search events...">
+        <button id="searchBtn" class="search-btn">Search</button>
+      </div>
+      <select id="typeFilter">
+        <option value="">All Types</option>
+        <option value="Birthday">Birthday</option>
+        <option value="Meeting">Meeting</option>
+        <option value="Event">Event</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="event-list-container">
+      <ul id="eventList"></ul>
+    </div>
+  </div>
+  <div id="eventFormPopup" class="popup">
+    <div class="popup-content">
+      <span id="closeFormBtn" class="close">×</span>
+      <h2 id="formTitle">Add New Event</h2>
+      <form id="eventForm">
+        <input type="hidden" id="eventId" name="eventId" />
+        <input type="text" id="title" name="title" placeholder="Title *" required />
+        <input type="text" id="description" name="description" placeholder="Description *" required />
+        <div class="date-time">
+          <input type="date" id="date" name="date" required />
+          <input type="time" id="time" name="time" required />
+        </div>
+        <select id="type" name="type" required>
+          <option value="" disabled selected>Event Type *</option>
+          <option value="Birthday">Birthday</option>
+          <option value="Meeting">Meeting</option>
+          <option value="Event">Event</option>
+          <option value="Other">Other</option>
+        </select>
+        <input type="text" id="location" name="location" placeholder="Location" required />
+        <input type="url" id="addressLink" name="addressLink" placeholder="Address Link (optional)" />
+        <input type="file" id="image" name="image" accept="image/*" />
+        <input type="number" id="ticketPrice" name="ticketPrice" placeholder="Ticket Price (0 for free)" min="0" />
+        <input type="number" id="peopleLimit" name="peopleLimit" placeholder="People Limit (optional)" min="1" />
+        <div class="visibility-options">
+          <label><input type="radio" name="visibility" value="public" checked> Public</label>
+          <label><input type="radio" name="visibility" value="private"> Private</label>
+        </div>
+        <div id="accessCodeField" style="display: none;">
+          <input type="text" id="accessCode" name="accessCode" placeholder="Access Code (required for private events)" />
+        </div>
+        <div class="form-actions">
+          <button type="button" id="cancelFormBtn">Cancel</button>
+          <button type="submit" id="submitFormBtn">Save Event</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div id="accessCodePopup" class="popup">
+    <div class="popup-content">
+      <span id="closeAccessCodePopup" class="close">×</span>
+      <h2>Enter Access Code</h2>
+      <input type="text" id="accessCodeInput" placeholder="Access Code" />
+      <div class="form-actions">
+        <button id="submitAccessCodeBtn">Submit</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
